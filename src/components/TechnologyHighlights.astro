@@ -1,0 +1,115 @@
+---
+const technologies = [
+  {
+    name: 'CBCT Scanning',
+    description: '3D imaging for precise diagnosis and treatment planning',
+    icon: '🔍'
+  },
+  {
+    name: 'Zeiss Microscopes',
+    description: 'Microscope-guided procedures for unmatched precision',
+    icon: '🔬'
+  },
+  {
+    name: 'Laser Dentistry',
+    description: 'Advanced laser treatments for faster healing',
+    icon: '⚡'
+  },
+  {
+    name: 'CEREC Technology',
+    description: 'Same-day crown design and placement',
+    icon: '🦷'
+  },
+  {
+    name: 'Digital Imaging',
+    description: 'High-resolution digital X-rays with minimal radiation',
+    icon: '📸'
+  },
+  {
+    name: '3D Surgical Guides',
+    description: 'Computer-guided surgical precision',
+    icon: '🎯'
+  }
+];
+---
+
+<section class="technology-highlights">
+  <div class="container">
+    <h2>Advanced Technology</h2>
+    <p class="subtitle">We invest in cutting-edge dental technology to provide the best outcomes</p>
+    <div class="tech-grid">
+      {technologies.map((tech) => (
+        <div class="tech-card">
+          <div class="tech-icon">{tech.icon}</div>
+          <h3>{tech.name}</h3>
+          <p>{tech.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .technology-highlights {
+    background: #f7fafc;
+    padding: 60px 20px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #1a202c;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #718096;
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .tech-card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .tech-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .tech-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .tech-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a202c;
+  }
+
+  .tech-card p {
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+</style>

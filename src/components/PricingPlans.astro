@@ -1,0 +1,189 @@
+---
+import { getCollection } from 'astro:content';
+
+const plans = (await getCollection('plans')).sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+---
+
+<section class="pricing-plans">
+  <div class="container">
+    <h2>Our Membership Plans</h2>
+    <p class="subtitle">Choose the perfect plan for your dental health needs</p>
+    <div class="plans-grid">
+      {plans.map((plan) => (
+        <div class={`plan-card ${plan.data.highlighted ? 'highlighted' : ''}`}>
+          {plan.data.highlighted && <div class="badge">Popular</div>}
+          <h3>{plan.data.name}</h3>
+          <p class="description">{plan.data.description}</p>
+          <div class="price">
+            <span class="currency">{plan.data.currency}</span>
+            <span class="amount">{plan.data.price}</span>
+            <span class="period">/{plan.data.period}</span>
+          </div>
+          <ul class="features">
+            {plan.data.features.map((feature) => (
+              <li>
+                <span class="checkmark">✓</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <button class={`cta-btn ${plan.data.highlighted ? 'primary' : 'secondary'}`}>
+            Get Started
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-plans {
+    background: #f7fafc;
+    padding: 60px 20px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #1a202c;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #718096;
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .plan-card {
+    background: white;
+    padding: 32px 24px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .plan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .plan-card.highlighted {
+    border-color: #667eea;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+    transform: scale(1.05);
+  }
+
+  .badge {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #667eea;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .plan-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1a202c;
+  }
+
+  .description {
+    color: #718096;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .price {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .currency {
+    font-size: 18px;
+    color: #718096;
+  }
+
+  .amount {
+    font-size: 48px;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 4px;
+  }
+
+  .period {
+    color: #718096;
+    font-size: 14px;
+  }
+
+  .features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+  }
+
+  .features li {
+    padding: 12px 0;
+    color: #4a5568;
+    font-size: 14px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .features li:last-child {
+    border-bottom: none;
+  }
+
+  .checkmark {
+    color: #48bb78;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+
+  .cta-btn {
+    width: 100%;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .cta-btn.primary {
+    background: #667eea;
+    color: white;
+  }
+
+  .cta-btn.primary:hover {
+    background: #764ba2;
+  }
+
+  .cta-btn.secondary {
+    background: #e2e8f0;
+    color: #1a202c;
+  }
+
+  .cta-btn.secondary:hover {
+    background: #cbd5e0;
+  }
+</style>

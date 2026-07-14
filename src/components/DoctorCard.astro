@@ -1,0 +1,139 @@
+---
+interface Props {
+  name: string;
+  title: string;
+  specialty: string;
+  image: string;
+  bio: string;
+  qualifications: string[];
+}
+
+const { name, title, specialty, image, bio, qualifications } = Astro.props;
+---
+
+<div class="doctor-card">
+  <div class="doctor-image">
+    <img src={image} alt={name} />
+  </div>
+  <div class="doctor-content">
+    <h3>{name}</h3>
+    <p class="title">{title}</p>
+    <p class="specialty">{specialty}</p>
+    <p class="bio">{bio}</p>
+    <div class="qualifications">
+      <h4>Qualifications:</h4>
+      <ul>
+        {qualifications.map((qual) => (
+          <li>{qual}</li>
+        ))}
+      </ul>
+    </div>
+    <a href="#contact" class="book-btn">Book Consultation</a>
+  </div>
+</div>
+
+<style>
+  .doctor-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .doctor-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .doctor-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: #e2e8f0;
+  }
+
+  .doctor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .doctor-content {
+    padding: 24px;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #1a202c;
+  }
+
+  .title {
+    font-size: 16px;
+    color: #667eea;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .specialty {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 12px;
+  }
+
+  .bio {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .qualifications {
+    margin-bottom: 16px;
+  }
+
+  .qualifications h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a202c;
+  }
+
+  .qualifications ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .qualifications li {
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 4px;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .qualifications li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+  }
+
+  .book-btn {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .book-btn:hover {
+    background: #764ba2;
+  }
+</style>

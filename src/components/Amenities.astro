@@ -1,0 +1,93 @@
+---
+const amenities = [
+  { icon: '📶', title: 'High-Speed WiFi', description: 'Stay connected during your visit' },
+  { icon: '⏰', title: 'Minimal Wait Time', description: 'Respect your time with efficient scheduling' },
+  { icon: '🌍', title: 'Multilingual Support', description: 'Communication in your preferred language' },
+  { icon: '🛋️', title: 'Comfort Seating', description: 'Relax in our comfortable waiting area' },
+  { icon: '🎵', title: 'Soothing Music', description: 'Calming ambiance to reduce anxiety' },
+  { icon: '🧼', title: 'Sterilization Standards', description: 'Highest safety and hygiene protocols' },
+  { icon: '☕', title: 'Refreshments', description: 'Complimentary beverages' },
+  { icon: '📱', title: 'Online Booking', description: 'Easy appointment scheduling' }
+];
+---
+
+<section class="amenities">
+  <div class="container">
+    <h2>Patient Amenities & Comfort</h2>
+    <p class="subtitle">We believe comfort and care go hand in hand</p>
+    <div class="amenities-grid">
+      {amenities.map((amenity) => (
+        <div class="amenity-item">
+          <div class="amenity-icon">{amenity.icon}</div>
+          <h3>{amenity.title}</h3>
+          <p>{amenity.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .amenities {
+    padding: 60px 20px;
+    background: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #1a202c;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #718096;
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+  }
+
+  .amenity-item {
+    padding: 24px;
+    text-align: center;
+    border-radius: 12px;
+    background: #f7fafc;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .amenity-item:hover {
+    border-color: #667eea;
+    background: #eef2ff;
+  }
+
+  .amenity-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+
+  .amenity-item h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a202c;
+  }
+
+  .amenity-item p {
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+</style>

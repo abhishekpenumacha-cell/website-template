@@ -1,0 +1,127 @@
+---
+interface Props {
+  calendlyUrl?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  calendlyUrl = 'https://calendly.com/your-clinic',
+  title = 'Book Your Free Consultation',
+  subtitle = 'Schedule an appointment with our specialists today'
+} = Astro.props;
+---
+
+<section class="appointment-cta">
+  <div class="cta-content">
+    <h2>{title}</h2>
+    <p>{subtitle}</p>
+    <div class="cta-buttons">
+      <a href={calendlyUrl} class="btn btn-primary" target="_blank">
+        Schedule Now
+      </a>
+      <a href="#contact" class="btn btn-secondary">
+        Contact Us
+      </a>
+    </div>
+  </div>
+  <div class="cta-features">
+    <div class="feature">
+      <span class="icon">📅</span>
+      <p>Easy Online Booking</p>
+    </div>
+    <div class="feature">
+      <span class="icon">⏱️</span>
+      <p>Same-Day Appointments</p>
+    </div>
+    <div class="feature">
+      <span class="icon">💬</span>
+      <p>Expert Guidance</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .appointment-cta {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .cta-content p {
+    font-size: 18px;
+    margin-bottom: 32px;
+    opacity: 0.95;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .btn {
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: white;
+    color: #667eea;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-secondary:hover {
+    background: white;
+    color: #667eea;
+  }
+
+  .cta-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .feature {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+  }
+
+  .feature .icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .feature p {
+    font-size: 14px;
+    margin: 0;
+  }
+</style>
